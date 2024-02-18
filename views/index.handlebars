@@ -1,36 +1,136 @@
-<header>
-  <h2>Blog Index</h2>
-</header>
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/dashboard">Dashboard</a></li>
 
-<article>
-  <header>
-    <h2>Story Item</h2>
-  </header>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae voluptatum velit nulla provident eos ipsam facere inventore eum. Consectetur laboriosam asperiores expedita repellendus esse iste consequatur quia doloremque cum praesentium.
-  </p>
-</article>
-<article>
-  <header>
-    <h2>Story Item</h2>
-  </header>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias neque deserunt autem? Eius sunt, voluptate, cumque consequatur sequi repellendus deleniti laborum in odio soluta quam, temporibus ipsa labore a quis.
-  </p>
-</article>
-<article>
-  <header>
-    <h2>Story Item</h2>
-  </header>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad recusandae sapiente eos placeat inventore voluptatem maxime iste velit, incidunt quam, veniam nostrum! Officiis veniam, alias odio voluptatem consectetur debitis magnam.
-  </p>
-</article>
-<article>
-  <header>
-    <h2>Story Item</h2>
-  </header>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptas placeat reprehenderit. Amet doloribus facere mollitia odio obcaecati nihil dolore culpa asperiores architecto dolorum. Minus fuga exercitationem dolore deleniti! Voluptates.
-  </p>
-</article>
+  </ul>
+</nav>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        <strong>Home</strong>
+      </a>
+
+      <a class="navbar-item">
+        <strong>Dashboard</strong>
+      </a>
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            <strong>Log in</strong>
+          </a>
+          <a class="button is-danger">
+            <strong>Log out</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title">Digital Dreamscape</h2>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h2>10 Tips for Writing Clean Code</h2>
+          <p> In the fast-paced world of software engineering, writing clean and maintainable code is crucial for long-term project success. <br>Here are ten practical tips to help you write cleaner code:</br>
+            <li>Use meaningful variable and function names that accurately describe their purpose.</li>
+            <li>Keep functions short and focused, adhering to the Single Responsibility Principle.</li>
+            <li>Follow consistent indentation and coding style guidelines for readability.</li>
+            <li>Avoid nested conditionals and excessive nesting to maintain code clarity.</li>
+            <li>Comment your code sparingly but effectively, focusing on why rather than what.</li>
+            <li>Modularize your code into reusable components to promote code reusability.</li>
+            <li>Keep your codebase DRY (Don't Repeat Yourself) by eliminating duplicate code.</li>
+            <li>Use descriptive commit messages when versioning your code with version control systems.</li>
+            <li>Regularly refactor your codebase to remove technical debt and improve maintainability.</li>
+            <li>Continuously seek feedback from peers and mentors to improve your coding practices.</li>
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h2>Story Item</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias neque deserunt autem? Eius sunt, voluptate, cumque consequatur sequi repellendus deleniti laborum in odio soluta quam, temporibus ipsa labore a quis.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h2>Story Item</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad recusandae sapiente eos placeat inventore voluptatem maxime iste velit, incidunt quam, veniam nostrum! Officiis veniam, alias odio voluptatem consectetur debitis magnam.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h2>Story Item</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptas placeat reprehenderit. Amet doloribus facere mollitia odio obcaecati nihil dolore culpa asperiores architecto dolorum. Minus fuga exercitationem dolore deleniti! Voluptates.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <a class="pagination-previous is-disabled" title="This is the first page">Previous</a>
+  <a class="pagination-next">Next page</a>
+  <ul class="pagination-list">
+    <li>
+      <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 2">2</a>
+    </li>
+    <li>
+      <a class="pagination-link" aria-label="Goto page 3">3</a>
+    </li>
+  </ul>
+</nav>
