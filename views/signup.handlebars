@@ -1,0 +1,44 @@
+<header>
+  <div class="columns">
+    <div class="column">
+      <form action="/api/users/signup" method="POST">
+        <h2 class="title is-size-1 has-text-centered">SIGN-UP</h2>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input id="username" class="input is-success" type="username" name="username" id="username"
+              placeholder="Username">
+          </div>
+          <p class="help is-success">Enter username</p>
+        </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input id="email" class="input is-success" type="email" name="email" id="email" placeholder="Email">
+          </div>
+          <p class="help is-success">Enter email</p>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input id="password" class="input is-success" type="password" name="password" id="password"
+              placeholder="Password">
+          </div>
+          <p class="help is-success">Enter password</p>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button id="signupBtn" class="button is-link">Sign Up</button>
+            </div>
+          </div>
+        </div>
+    </div>
+

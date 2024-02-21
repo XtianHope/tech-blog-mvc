@@ -1,3 +1,35 @@
-<header>
-  <h2>Login</h2>
-</header>
+<div class="column">
+  <form action="/api/users/login" method="POST">
+    <h2 class="title is-size-1 has-text-centered">LOGIN</h2>
+
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input id="email" class="input is-success" type="email" name="email" id="email" placeholder="Email">
+      </div>
+      <p class="help is-success">Enter email</p>
+    </div>
+
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input id="password" class="input is-success" type="password" name="password" id="password" placeholder="Password">
+      </div>
+      <p class="help is-success">Enter password</p>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button id="loginButton" class="button is-link">Login</button>
+        </div>
+        <script src="./js/login.js"></script>
+      </div>
+    </div>
+  </form>
+</div>
+

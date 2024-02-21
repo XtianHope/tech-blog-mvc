@@ -16,9 +16,14 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        isAlphanumeric: true,
+        len: [5,30],
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -26,6 +31,7 @@ User.init(
       unique: true,
       validate: {
         isEmail: true,
+        len: [10,100]
       },
     },
     password: {
@@ -45,6 +51,8 @@ User.init(
     },
     sequelize,
     timestamps: false,
+    freezeTableName: true,
+    underscored: true,
     modelName: 'user',
   }
 );

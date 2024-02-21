@@ -44,6 +44,11 @@ app.get('/dashboard', (req, res) => {
   res.render('dashboard');
 });
 
+app.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening at http://localhost:' + PORT));
 });
