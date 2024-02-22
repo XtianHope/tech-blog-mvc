@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   document.addEventListener('DOMContentLoaded', () => {
-    const logoutButton = document.querySelector('.button.is-danger');
-    
+    const logoutButton = document.getElementById('logoutButton');
+  
     if (logoutButton) {
       logoutButton.addEventListener('click', () => {
         window.location.href = '/logout';
