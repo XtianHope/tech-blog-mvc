@@ -1,8 +1,4 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -13,35 +9,8 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
+      <a class="navbar-item" href="/"><strong>Home</strong></a>
 
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
     <div class="navbar-end">
@@ -55,3 +24,38 @@
     </div>
   </div>
 </nav>
+
+{{#each posts}}
+<div class="post">
+  <h3>{{title}}</h3>
+  <p>{{content}}</p>
+</div>
+{{/each}}
+
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <h2 class="title is-2">Create a New Blog Post</h2>
+      <form id="createPostForm">
+        <div class="field">
+          <label class="label" for="title">Title</label>
+          <div class="control">
+            <input class="input" type="text" id="title" name="title" placeholder="Enter the title" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="content">Content</label>
+          <div class="control">
+            <textarea class="textarea" id="content" name="content" placeholder="Enter the content" required></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" type="submit">Create Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./routes');
 const helpers = require('./utils/helpers');
+const db = require('./models');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -40,8 +41,25 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+app.get('/dashboard', async (req, res) => {
+  try {
+    const posts = await db.Post.findAll();
+    res.render('dashboard', { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.post('/dashboard', async (req, res) => {
+  try {
+    const newPost = await db.Post.create({
+      title: req.body.title,
+      content: req.body.content,
+    });
+    res.redirect('/dashboard');
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 app.get('/signup', (req, res) => {

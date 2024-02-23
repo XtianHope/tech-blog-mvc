@@ -1,7 +1,6 @@
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/dashboard">Dashboard</a></li>
+    <li></li>
 
   </ul>
 </nav>
@@ -10,14 +9,8 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        <strong>Home</strong>
-      </a>
-
-      <a class="navbar-item">
-        <strong>Dashboard</strong>
-      </a>
-
+      <a class="navbar-item" href="/"><strong>Home</strong></a>
+      <a class="navbar-item" href="/dashboard"><strong>Dashboard</strong></a>
     </div>
 
     <div class="navbar-end">
@@ -39,7 +32,13 @@
 </nav>
 
 
-
+{{#each posts}}
+<div class="post">
+  <h2>{{title}}</h2>
+  <p>{{content}}</p>
+  <p>Posted by: {{username}}</p>
+</div>
+{{/each}}
 
 
 <section class="section">
@@ -120,6 +119,9 @@ In this blog post series, we'll delve deeper into the principles of serverless c
   </div>
 </section>
 
+
+
+<div class="box">
 <section class="section">
   <div class="container">
     <article class="media">
@@ -144,6 +146,9 @@ Throughout this blog series, we'll explore these and other concepts in machine l
     </article>
   </div>
 </section>
+</div>
+
+
 
 
 
