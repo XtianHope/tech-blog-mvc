@@ -37,13 +37,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-app.get('/', (req, res) => {
-  res.render('index');
+app.get('/', async (req, res) => {
+  try {
+    const posts = await db.Post.findAll({ include: db.User });
+    res.render('index', { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 app.get('/dashboard', async (req, res) => {
   try {
-    const posts = await db.Post.findAll();
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
+
+    const posts = await db.Post.findAll({ where: { user_id: req.session.user_id } });
     res.render('dashboard', { posts });
   } catch (err) {
     res.status(500).json(err);
@@ -52,9 +62,17 @@ app.get('/dashboard', async (req, res) => {
 
 app.post('/dashboard', async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
+
     const newPost = await db.Post.create({
       title: req.body.title,
       content: req.body.content,
+      user_id: req.session.user_id,
+      username: req.session.username,
+      createdAt: new Date()
     });
     res.redirect('/dashboard');
   } catch (err) {
@@ -62,8 +80,76 @@ app.post('/dashboard', async (req, res) => {
   }
 });
 
+
+app.put('/dashboard/:id', async (req, res) => {
+  try {
+    const updatedPost = await db.Post.update({
+      title: req.body.title,
+      content: req.body.content,
+    }, {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id
+      }
+    });
+    if (updatedPost[0] === 0) {
+      return res.status(403).send("You are not authorized to edit this post.");
+    }
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+
+app.post('/login', async (req, res) => {
+  try {
+    const user = await db.User.findOne({ where: { email: req.body.email } });
+    if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
+      return res.status(401).send("Invalid email or password");
+    }
+    req.session.user_id = user.id;
+    req.session.logged_in = true;
+    req.session.username = user.username;
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+    res.redirect('/');
+  });
+});
+
+
 app.get('/signup', (req, res) => {
   res.render('signup');
+});
+
+app.post('/signup', async (req, res) => {
+  try {
+    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+    const newUser = await db.User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashedPassword
+    });
+    req.session.user_id = newUser.id;
+    req.session.logged_in = true;
+    req.session.username = newUser.username;
+    res.redirect('/dashboard');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 

@@ -1,61 +1,73 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
     </a>
-  </div>
+</nav>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+<div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/"><strong>Home</strong></a>
-
+        <a class="navbar-item" href="/"><strong>Home</strong></a>
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a id="logoutButton" class="button is-danger">
-            <strong>Log out</strong>
-          </a>
+        <div class="navbar-item">
+            <div class="buttons">
+                <a id="logoutButton" class="button is-danger">
+                    <strong>Log out</strong>
+                </a>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</nav>
+</div>
 
 {{#each posts}}
-<div class="post">
-  <h3>{{title}}</h3>
-  <p>{{content}}</p>
+<div class="container">
+    <div class="post">
+        <h3>{{title}}</h3>
+        <p>{{content}}</p>
+        <button class="button is-warning edit-post-btn" data-post-id="{{id}}">Edit</button>
+    </div>
 </div>
 {{/each}}
 
-
 <div class="container">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <h2 class="title is-2">Create a New Blog Post</h2>
-      <form id="createPostForm">
-        <div class="field">
-          <label class="label" for="title">Title</label>
-          <div class="control">
-            <input class="input" type="text" id="title" name="title" placeholder="Enter the title" required>
-          </div>
+    <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+            <h2 class="title is-2">Create a New Blog Post</h2>
+            <form id="createPostForm">
+                <div class="field">
+                    <label class="label" for="title">Title</label>
+                    <div class="control">
+                        <input class="input" type="text" id="title" name="title" placeholder="Enter the title" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="content">Content</label>
+                    <div class="control">
+                        <textarea class="textarea" id="content" name="content" placeholder="Enter the content" required></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Create Post</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="field">
-          <label class="label" for="content">Content</label>
-          <div class="control">
-            <textarea class="textarea" id="content" name="content" placeholder="Enter the content" required></textarea>
-          </div>
-        </div>
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary" type="submit">Create Post</button>
-          </div>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const editButtons = document.querySelectorAll('.edit-post-btn');
+        editButtons.forEach(button => {
+            button.addEventListener('click', async (event) => {
+                event.preventDefault();
+                const postId = button.dataset.postId;
+                window.location.href = `/edit/${postId}`;
+            });
+        });
+    });
+</script>

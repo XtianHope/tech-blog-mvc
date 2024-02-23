@@ -54,4 +54,24 @@ router.get("/logout", (req, res) => {
     }
   });
 
+
+
+
+router.get("/dashboard", async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect("/login");
+      return;
+    }
+
+    const userPosts = await Post.findAll({ where: { user_id: req.session.user_id } });
+
+
+    res.render("dashboard", { posts: userPosts });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 module.exports = router;
